@@ -2,33 +2,31 @@ package wiremock;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
-import dto.User;
+import dto.Score;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import services.UserService;
+import services.ScoreService;
 import stubs.RegisterStub;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @WireMockTest
-public class UserAPITest {
-
+public class ScoreJSONTest {
   @BeforeClass
   public static void register() {
-    new RegisterStub().register("user.json", "/user");
+    String name = "Test%20user";
+    new RegisterStub().register("score.json", "/user/get/" + name, false);
   }
-
   @Test
-  public void getUserStubTest() throws IOException {
-    String filePath = Paths.get("src/test/resources/__files/user.json").toString();
+  public void getAllCoursesTest() throws IOException {
+    String filePath = Paths.get("src/test/resources/__files/score.json").toString();
     String json = Files.readString(Paths.get(filePath));
-    // Преобразуем JSON в объект User
     ObjectMapper objectMapper = new ObjectMapper();
-    User expectedUser = objectMapper.readValue(json, User.class);
+    Score score = objectMapper.readValue(json, Score.class);
 
-    User user = new UserService().getUserInfo();
-    Assert.assertEquals(expectedUser, user);
+    Score actualScore = new ScoreService(false).getScoreInfo("Test user");
+    Assert.assertEquals(score, actualScore);
   }
 }

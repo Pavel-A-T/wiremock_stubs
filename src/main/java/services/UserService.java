@@ -4,8 +4,8 @@ import dto.User;
 import java.util.HashMap;
 
 public class UserService extends AbsBaseService {
-  public UserService() {
-    super("/user");
+  public UserService(boolean isXml) {
+    super("/user", isXml);
   }
 
   public User getUserInfo() {

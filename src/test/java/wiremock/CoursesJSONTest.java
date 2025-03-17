@@ -14,10 +14,10 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @WireMockTest
-public class CoursesAPITest {
+public class CoursesJSONTest {
   @BeforeClass
   public static void register() {
-    new RegisterStub().register("courses.json", "/course/get/all");
+    new RegisterStub().register("courses.json", "/course/get/all", false);
   }
   @Test
   public void getAllCoursesTest() throws IOException {
@@ -26,7 +26,7 @@ public class CoursesAPITest {
     ObjectMapper objectMapper = new ObjectMapper();
     List<Course> courses = objectMapper.readValue(json, List.class);
 
-    List<Course> actualAllCourses = new CoursesService().getCoursesInfo();
+    List<Course> actualAllCourses = new CoursesService(false).getCoursesInfo();
     Assert.assertEquals(courses, actualAllCourses);
   }
 }

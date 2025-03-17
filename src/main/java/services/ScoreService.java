@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ScoreService extends AbsBaseService {
-  public ScoreService() {
-    super("/user/get/{name}");
+  public ScoreService(boolean isXml) {
+    super("/user/get/{name}", isXml);
   }
 
   public Score getScoreInfo(String name) {

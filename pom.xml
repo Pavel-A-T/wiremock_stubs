@@ -12,11 +12,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <junit.version>4.13.2</junit.version>
-    <assertj.version>3.27.2</assertj.version>
     <wiremock.version>3.12.1</wiremock.version>
     <rest-assured.version>5.4.0</rest-assured.version>
     <lombok.version>1.18.36</lombok.version>
-    <jackson-core.version>2.18.2</jackson-core.version>
+    <jackson.version>2.18.2</jackson.version>
+    <jakarta.xml.version>4.0.0</jakarta.xml.version>
+    <jaxb-runtime.version>4.0.1</jaxb-runtime.version>
+    <assertj.version>3.27.2</assertj.version>
     <compiler.plugin.version>3.10.1</compiler.plugin.version>
     <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
@@ -48,7 +50,22 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>${jackson-core.version}</version>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-xml</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>jaxb-runtime</artifactId>
+      <version>${jaxb-runtime.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>jakarta.xml.bind-api</artifactId>
+      <version>${jakarta.xml.version}</version>
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>

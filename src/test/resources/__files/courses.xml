@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Courses>
+  <Course>
+    <name>QA java</name>
+    <price>15000</price>
+  </Course>
+  <Course>
+    <name>Java</name>
+    <price>12000</price>
+  </Course>
+</Courses>
